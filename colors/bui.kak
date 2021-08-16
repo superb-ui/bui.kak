@@ -8,7 +8,7 @@
 # Description:  BUI for Kakoune
 # Author:       NNB
 #               └─ https://github.com/NNBnh
-# URL:          https://github.com/NNBnh/bui.kak
+# URL:          https://github.com/superb-ui/bui.kak
 # License:      GPLv3
 
 #    This program is free software: you can redistribute it and/or modify
@@ -28,13 +28,12 @@
 evaluate-commands %sh{
 	# Values
 	i='0'
-
 	while [ "$i" -le 22 ]; do
 		case $i in
 			'0')  element='base00'        ; check=${BUI_COLOR_BASE00:-black}                ;;
 			'1')  element='base01'        ; check=${BUI_COLOR_BASE01:-black}                ;;
-			'2')  element='base02'        ; check=${BUI_COLOR_BASE02:-black}                ;;
-			'3')  element='base03'        ; check=${BUI_COLOR_BASE03:-bright-black}         ;;
+			'2')  element='base02'        ; check=${BUI_COLOR_BASE02:-bright-black}         ;;
+			'3')  element='base03'        ; check=${BUI_COLOR_BASE03:-white}                ;;
 			'4')  element='base04'        ; check=${BUI_COLOR_BASE04:-white}                ;;
 			'5')  element='base05'        ; check=${BUI_COLOR_BASE05:-bright-white}         ;;
 			'6')  element='base06'        ; check=${BUI_COLOR_BASE06:-bright-white}         ;;
@@ -55,7 +54,6 @@ evaluate-commands %sh{
 			'21') element='cursor_alt'    ; check=${BUI_COLOR_CURSOR_ALT:-white}            ;;
 			'22') element='selection'     ; check=${BUI_COLOR_SELECTION:-bright-black}      ;;
 		esac
-
 		case $check in
 			"${BUI_COLOR_FOREGROUND:-foreground}")      eval "${element}_fg=\"default\"        ; ${element}_bg=\"bright-white\""    ;;
 			"${BUI_COLOR_BACKGROUND:-background}")      eval "${element}_fg=\"black\"          ; ${element}_bg=\"default\""         ;;
@@ -77,13 +75,9 @@ evaluate-commands %sh{
 			"${BUI_COLOR_TERMINAL015:-bright-white}")   eval "${element}_fg=\"bright-white\"   ; ${element}_bg=\"bright-white\""    ;;
 			*)                                          eval "${element}_fg=\"rgb:${check#\#}\"; ${element}_bg=\"rgb:${check#\#}\"" ;;
 		esac
-
 		i=$(( i + 1 ))
 	done
-
 	[ "$kak_opt_bui_cursor_information" = 'true' ] && information='MenuForeground'
-
-
 	# Start
 		# UI
 		echo "
@@ -95,12 +89,10 @@ evaluate-commands %sh{
 			face global SecondaryCursor     $background_fg,$cursor_alt_bg+fg
 			face global PrimaryCursorEol    PrimaryCursor
 			face global SecondaryCursorEol  SecondaryCursor
-
 			# Line number
 			face global LineNumbers         $foreground_alt_fg,$background_alt_bg
 			face global LineNumberCursor    $cursor_fg,$background_alt_bg
 			face global LineNumbersWrapped  $background_alt_fg,$background_alt_bg
-
 			# Status bar
 			face global StatusLine          $foreground_fg,$background_alt_bg
 			face global StatusLineInfo      $cursor_fg
@@ -112,7 +104,6 @@ evaluate-commands %sh{
 			face global Information         ${information:-$foreground_fg,$background_alt_bg}
 			face global Prompt              Information
 			face global StatusCursor        PrimaryCursor
-
 			# Other
 			face global Error               $background_fg,$base08_bg+fg
 			face global MatchingChar        $foreground_fg,$background_alt_bg
@@ -120,7 +111,6 @@ evaluate-commands %sh{
 			face global Whitespace          $background_alt_fg+f
 			face global WrapMarker          Whitespace
 		"
-
 		# Syntax
 		echo "
 			# Code
@@ -137,7 +127,6 @@ evaluate-commands %sh{
 			face global documentation       comment
 			face global meta                $base0a_fg
 			face global builtin             $foreground_fg+b
-
 			# Markdown
 			face global title               $foreground_fg+b
 			face global header              $base0d_fg
