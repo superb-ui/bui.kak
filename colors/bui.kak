@@ -32,8 +32,8 @@ evaluate-commands %sh{
 		case $i in
 			'0')  element='base00'        ; check=${BUI_COLOR_BASE00:-black}                ;;
 			'1')  element='base01'        ; check=${BUI_COLOR_BASE01:-black}                ;;
-			'2')  element='base02'        ; check=${BUI_COLOR_BASE02:-bright-black}         ;;
-			'3')  element='base03'        ; check=${BUI_COLOR_BASE03:-white}                ;;
+			'2')  element='base02'        ; check=${BUI_COLOR_BASE02:-black}                ;;
+			'3')  element='base03'        ; check=${BUI_COLOR_BASE03:-bright-black}         ;;
 			'4')  element='base04'        ; check=${BUI_COLOR_BASE04:-white}                ;;
 			'5')  element='base05'        ; check=${BUI_COLOR_BASE05:-bright-white}         ;;
 			'6')  element='base06'        ; check=${BUI_COLOR_BASE06:-bright-white}         ;;
