@@ -15,7 +15,7 @@
 With [`plug.kak`](https://github.com/robertmeta/plug.kak) just put this in your `kakrc`:
 
 ```
-plug "NNBnh/bui.kak" theme config %{
+plug "superb-ui/bui.kak" theme config %{
 	declare-option str-list bui_cursor_information 'true' # Put this here if you want to use cursor color for information
 
 	colorscheme bui
